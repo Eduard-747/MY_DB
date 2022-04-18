@@ -4,7 +4,6 @@
 #include <iostream>
 
 extern std::pair<std::string, int> data_parser();
-extern bool clic_command_checker(const std::string&);
 
 int main()
 {	
