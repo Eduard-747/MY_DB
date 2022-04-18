@@ -4,12 +4,12 @@
 #include <string>
 #include <iostream>
 
-size_t myl::mhash::operator()(const myl::DataBase& o) const
+size_t myDB::mhash::operator()(const myDB::DataBase& o) const
 {
   return std::hash<std::string>{}(o.get_DataBase_name());
 }
 
-std::string myl::Command::_creat(const std::vector<std::string>& tokens)
+std::string myDB::Command::_creat(const std::vector<std::string>& tokens)
 {
   try
   {
@@ -18,13 +18,13 @@ std::string myl::Command::_creat(const std::vector<std::string>& tokens)
   catch(const std::exception& e)
   {
     
-    return "eeee chelav ay axper\n" ;
+    return "eeee chelav ay axper\n";
   }
 
   return "lava lava\n";
 }
 
-std::string myl::Command::_creat_table(const std::vector<std::string>& tokens)
+std::string myDB::Command::_creat_table(const std::vector<std::string>& tokens)
 {
   try
   {
@@ -32,13 +32,13 @@ std::string myl::Command::_creat_table(const std::vector<std::string>& tokens)
   }
   catch(const std::exception& e)
   {
-    return "eeee chelav ay axper\n" ;
+    return "eeee chelav ay axper\n";
   }
 
   return "lava lava\n";
 }
 
-std::string myl::Command::_creat_DB_and_tables(const std::vector<std::string>& tokens)
+std::string myDB::Command::_creat_DB_and_tables(const std::vector<std::string>& tokens)
 {
   try
   {
@@ -46,13 +46,13 @@ std::string myl::Command::_creat_DB_and_tables(const std::vector<std::string>& t
   }
   catch(const std::exception& e)
   {
-    return "eeee chelav ay axper\n" ;
+    return "eeee chelav ay axper\n";
   }
 
   return "lava lava\n";
 }
 
-std::string myl::Command::_push_info(const std::vector<std::string>& tokens)
+std::string myDB::Command::_push_info(const std::vector<std::string>& tokens)
 {
   try
   {
@@ -60,13 +60,13 @@ std::string myl::Command::_push_info(const std::vector<std::string>& tokens)
   }
   catch(const std::exception& e)
   {
-    return "eeee chelav ay axper\n" ;
+    return "eeee chelav ay axper\n";
   }
 
   return "lava lava\n";
 }
 
-std::string myl::Command::_read(const std::vector<std::string>& tokens) 
+std::string myDB::Command::_read(const std::vector<std::string>& tokens) 
 {
   try
   {
@@ -74,11 +74,11 @@ std::string myl::Command::_read(const std::vector<std::string>& tokens)
   }
   catch(const std::exception& e)
   {
-    return "eeee chelav ay axper\n" ;
+    return "eeee chelav ay axper\n";
   }
 }
 
-std::string myl::Command::_read_table(const std::vector<std::string>& tokens)
+std::string myDB::Command::_read_table(const std::vector<std::string>& tokens)
 {
   try
   {
@@ -86,11 +86,11 @@ std::string myl::Command::_read_table(const std::vector<std::string>& tokens)
   }
   catch(const std::exception& e)
   {
-    return "eeee chelav ay axper\n" ;
+    return "eeee chelav ay axper\n";
   }
 }
 
-std::string myl::Command::_read_info(const std::vector<std::string>& tokens)
+std::string myDB::Command::_read_info(const std::vector<std::string>& tokens)
 {
   try
   {
@@ -98,12 +98,12 @@ std::string myl::Command::_read_info(const std::vector<std::string>& tokens)
   }
   catch(const std::exception& e)
   {
-    return "eeee chelav ay axper\n" ;
+    return "eeee chelav ay axper\n";
   }
 
 }
 
-std::string myl::Command::_update(const std::vector<std::string>& tokens)
+std::string myDB::Command::_update(const std::vector<std::string>& tokens)
 {
   try
   {
@@ -111,13 +111,13 @@ std::string myl::Command::_update(const std::vector<std::string>& tokens)
   }
   catch(const std::exception& e)
   {
-    return "eeee chelav ay axper\n" ;
+    return "eeee chelav ay axper\n";
   }
 
   return "lava lava\n";
 }
 
-std::string myl::Command::_delete(const std::vector<std::string>& tokens)
+std::string myDB::Command::_delete(const std::vector<std::string>& tokens)
 {
   try
   {
@@ -126,13 +126,13 @@ std::string myl::Command::_delete(const std::vector<std::string>& tokens)
   }
   catch(const std::exception& e)
   {
-    return "eeee chelav ay axper\n" ;
+    return "eeee chelav ay axper\n";
   }
 
   return "lava lava\n";
 }
 
-std::string myl::Command::_delete_table(const std::vector<std::string>& tokens)
+std::string myDB::Command::_delete_table(const std::vector<std::string>& tokens)
 {
   try
   {
@@ -140,13 +140,13 @@ std::string myl::Command::_delete_table(const std::vector<std::string>& tokens)
   }
   catch(const std::exception& e)
   {
-    return "eeee chelav ay axper\n" ;
+    return "eeee chelav ay axper\n";
   }
 
   return "lava lava\n";
 }
 
-std::string myl::Command::_delete_info(const std::vector<std::string>& tokens) 
+std::string myDB::Command::_delete_info(const std::vector<std::string>& tokens) 
 {
   try
   {
@@ -154,18 +154,18 @@ std::string myl::Command::_delete_info(const std::vector<std::string>& tokens)
   }
   catch(const std::exception& e)
   {
-    return "eeee chelav ay axper\n" ;
+    return "eeee chelav ay axper\n";
   }
 
   return "lava lava\n";
 }
 
-std::string myl::Command::_disconnect(const std::vector<std::string>& tokens)
+std::string myDB::Command::_disconnect(const std::vector<std::string>& tokens)
 {
   return "thank you\n";
 }
 
-myl::Command::Command()
+myDB::Command::Command()
 {
   com_coll["creat"] = &Command::_creat;
   com_coll["creat_DB_tables"] = &Command::_creat_DB_and_tables;
@@ -181,7 +181,7 @@ myl::Command::Command()
   com_coll["disconnect"] = &Command::_disconnect;
 }
 
-std::string myl::Command::coll_command(const std::vector<std::string>& tokens)
+std::string myDB::Command::coll_command(const std::vector<std::string>& tokens)
 {
   try
   {
@@ -189,6 +189,6 @@ std::string myl::Command::coll_command(const std::vector<std::string>& tokens)
   }
   catch(const std::exception& e)
   {
-    return "eeee chelav ay axper tenc hraman chka\n" ;
+    return "eeee chelav ay axper tenc hraman chka\n";
   }
 }

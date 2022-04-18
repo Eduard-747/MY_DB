@@ -6,7 +6,7 @@
 #include <vector>
 #include <string>
 
-namespace myl
+namespace myDB
 {
   
   class Parser
@@ -18,6 +18,6 @@ namespace myl
     std::vector<std::string> tokens;
   };
 
-} // myl
+} // myDB
 
 #endif // PARSER_H

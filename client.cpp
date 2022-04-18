@@ -4,10 +4,10 @@
 #include <iostream>
 #include <string>
 
-Client::Client(std::string IP_addres , int port)
+Client::Client(std::string IP_addres, int port)
 {
   serverIp = IP_addres;
-  static const int SERVER_PORT = port ;
+  static const int SERVER_PORT = port;
   
   if ((sockfd = socket(AF_INET, SOCK_STREAM, 0)) < 0)
   {
@@ -19,7 +19,7 @@ Client::Client(std::string IP_addres , int port)
   serverAddr.sin_family = AF_INET;
   serverAddr.sin_port = htons(SERVER_PORT);
   
-  if (inet_pton(AF_INET, serverIp.c_str() , &serverAddr.sin_addr) <= 0)
+  if (inet_pton(AF_INET, serverIp.c_str(), &serverAddr.sin_addr) <= 0)
   {
     std::cerr << "inet_pton error\n";
     exit(1);
@@ -45,7 +45,7 @@ void Client::sendAndRecv(const std::string& sendLine)
   while ((n = recv(sockfd, &ch, 1, 0)))
   {
     if (ch == '\r') break;
-    std::cout << ch ;
+    std::cout << ch;
   }
   
   if (n < 0)

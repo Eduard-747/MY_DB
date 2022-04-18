@@ -7,7 +7,7 @@
 #include <fstream>
 #include <map>
 
-namespace myl {
+namespace myDB {
 
   class DataBase
   {
@@ -27,7 +27,7 @@ namespace myl {
     void delete_table(const std::string&); 
     void delete_info(const std::string&, int); 
     void delete_DB(); 
-    int get_table_size(const std::string&) const ;
+    int get_table_size(const std::string&) const;
 
     bool operator==(const DataBase&) const;
 
@@ -36,6 +36,6 @@ namespace myl {
     std::unordered_map<std::string, std::map<int,std::string>> table;
   };
 
-} // myl
+} // myDB
 
 #endif // DATABASE_H

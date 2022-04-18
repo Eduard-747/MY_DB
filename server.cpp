@@ -14,7 +14,7 @@ int Server::ID = 1110;
 the transmitted class must have
 this functions parse_code() and get_tokens()
 ************/
-template <class Parser = myl::Parser>  
+template <class Parser = myDB::Parser>  
 static void* serverThreadRoutine(void *arg)
 {
   int _connfd = *(int*)arg;
@@ -32,7 +32,7 @@ static void* serverThreadRoutine(void *arg)
   
   Parser pars;
   std::vector<std::string> tokens;
-  myl::Command command;
+  myDB::Command command;
 
   while (true)
   {
@@ -59,7 +59,7 @@ static void* serverThreadRoutine(void *arg)
   return 0;
 }
 
-Server::Server(std::string IP_addres , int port)
+Server::Server(std::string IP_addres, int port)
 {
   static const int SERVER_PORT = port;
   listenfd = socket(AF_INET, SOCK_STREAM, 0);

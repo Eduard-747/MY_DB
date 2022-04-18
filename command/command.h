@@ -7,11 +7,11 @@
 #include <vector>
 #include <unordered_map>
 
-namespace myl {
+namespace myDB {
   class mhash
   {
   public:
-    size_t operator()(const myl::DataBase& o) const;
+    size_t operator()(const myDB::DataBase& o) const;
   };
   class Command
   {
@@ -37,11 +37,11 @@ namespace myl {
 
     std::string _disconnect(const std::vector<std::string>&);
   private:
-    myl::CRUD<myl::DataBase, myl::mhash> crud;
+    myDB::CRUD<myDB::DataBase, myDB::mhash> crud;
     std::unordered_map<std::string,
         std::string(Command::*)(const std::vector<std::string>&)> com_coll;
   };
 
-} // myl
+} // myDB
 
 #endif // COMMAND_H

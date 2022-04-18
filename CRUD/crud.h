@@ -8,7 +8,7 @@
 #include <fstream>
 #include <iostream>
 
-namespace myl {
+namespace myDB {
 
   /****************************************************************************** 
   the transmitted class must have this functions: 
@@ -49,10 +49,10 @@ namespace myl {
     std::unordered_map<std::string, DB, hash> dbs;
   };
 
-} // myl
+} // myDB
 
 template <class DB, class hash>
-void myl::CRUD<DB,hash>::delete_db_name_in_sfile(const std::string& db_name)
+void myDB::CRUD<DB,hash>::delete_db_name_in_sfile(const std::string& db_name)
 {
   std::vector<std::string> names;
   std::ifstream ifile;
@@ -77,7 +77,7 @@ void myl::CRUD<DB,hash>::delete_db_name_in_sfile(const std::string& db_name)
 }
 
 template <class DB, class hash>
-void myl::CRUD<DB,hash>::push_db_name_in_sfile(const std::string& db_name)
+void myDB::CRUD<DB,hash>::push_db_name_in_sfile(const std::string& db_name)
 {
   std::ifstream ifile;
   open_file_input(ifile, "./.DBnames/names.txt");
@@ -96,7 +96,7 @@ void myl::CRUD<DB,hash>::push_db_name_in_sfile(const std::string& db_name)
 }
 
 template <class DB, class hash>
-void myl::CRUD<DB,hash>::open_file_input(std::ifstream& ifile, const std::string& fileName)
+void myDB::CRUD<DB,hash>::open_file_input(std::ifstream& ifile, const std::string& fileName)
 {
   ifile.open(fileName);
 
@@ -108,7 +108,7 @@ void myl::CRUD<DB,hash>::open_file_input(std::ifstream& ifile, const std::string
 }
 
 template <class DB, class hash>
-void myl::CRUD<DB,hash>::set_table(const std::string& DB_name, const std::vector<std::string>& table_names)
+void myDB::CRUD<DB,hash>::set_table(const std::string& DB_name, const std::vector<std::string>& table_names)
 {
   auto& db = dbs.at(DB_name);
   for(const auto& t_name: table_names)
@@ -119,67 +119,67 @@ void myl::CRUD<DB,hash>::set_table(const std::string& DB_name, const std::vector
 }
 
 template <class DB, class hash>
-void myl::CRUD<DB,hash>::delete_table(const std::string& DB_name, const std::string& table_name)
+void myDB::CRUD<DB,hash>::delete_table(const std::string& DB_name, const std::string& table_name)
 {
-  auto & db = dbs.at(DB_name);
+  auto &db = dbs.at(DB_name);
   db.delete_table(table_name);
   generate_DB(db);
 }
 
 template <class DB, class hash>
-void myl::CRUD<DB,hash>::delete_info(const std::string& DB_name, const std::string& table_name, int count)
+void myDB::CRUD<DB,hash>::delete_info(const std::string& DB_name, const std::string& table_name, int count)
 {
-  auto & db = dbs.at(DB_name);
+  auto &db = dbs.at(DB_name);
   db.delete_info(table_name, count);
   generate_DB(db);
 }
 
 template <class DB, class hash>
-void myl::CRUD<DB,hash>::delete_DB(const std::string& DB_name) 
+void myDB::CRUD<DB,hash>::delete_DB(const std::string& DB_name) 
 {
   dbs.erase(DB_name);
   delete_db_name_in_sfile(DB_name);
 }
 
 template <class DB, class hash>
-std::string myl::CRUD<DB,hash>::get_DB(const std::string& DB_name) const
+std::string myDB::CRUD<DB,hash>::get_DB(const std::string& DB_name) const
 {
-  auto & db = dbs.at(DB_name);
+  auto &db = dbs.at(DB_name);
   return db.get_DB();
 }
 
 template <class DB, class hash>
-std::string myl::CRUD<DB,hash>::get_info(const std::string& DB_name, const std::string& table_name, int count) const
+std::string myDB::CRUD<DB,hash>::get_info(const std::string& DB_name, const std::string& table_name, int count) const
 {
-  auto & db = dbs.at(DB_name);
+  auto &db = dbs.at(DB_name);
   return db.get_info(table_name, count);
 }
 
 template <class DB, class hash>
-std::string myl::CRUD<DB,hash>::get_table(const std::string& DB_name, const std::string& table_name) const
+std::string myDB::CRUD<DB,hash>::get_table(const std::string& DB_name, const std::string& table_name) const
 {
-  auto & db = dbs.at(DB_name);
+  auto &db = dbs.at(DB_name);
   return db.get_table(table_name);
 }
 
 template <class DB, class hash>
-void myl::CRUD<DB,hash>::push_info(const std::string& DB_name, const std::string& table_name, const std::string& info)
+void myDB::CRUD<DB,hash>::push_info(const std::string& DB_name, const std::string& table_name, const std::string& info)
 {
-  auto & db = dbs.at(DB_name);
+  auto &db = dbs.at(DB_name);
   db.set_info(table_name, db.get_table_size(table_name), info);
   generate_DB(db);
 }
 
 template <class DB, class hash>
-void myl::CRUD<DB,hash>::change_info(const std::string& DB_name, const std::string& table_name, int count, const std::string& info)
+void myDB::CRUD<DB,hash>::change_info(const std::string& DB_name, const std::string& table_name, int count, const std::string& info)
 {
-  auto & db = dbs.at(DB_name);
+  auto &db = dbs.at(DB_name);
   db.change_info(table_name, count, info);
   generate_DB(db);
 }
 
 template <class DB, class hash>
-void myl::CRUD<DB,hash>::generate_DB(const DB& db)
+void myDB::CRUD<DB,hash>::generate_DB(const DB& db)
 {
   std::ofstream ofile;
   ofile.open("./DataBaseTxt/" + db.get_DataBase_name());
@@ -188,7 +188,7 @@ void myl::CRUD<DB,hash>::generate_DB(const DB& db)
 }
 
 template <class DB, class hash>
-void myl::CRUD<DB,hash>::creat_DB(const std::string& DB_name,const std::vector<std::string>& tables)
+void myDB::CRUD<DB,hash>::creat_DB(const std::string& DB_name,const std::vector<std::string>& tables)
 {
   DB db(DB_name, tables);
   dbs.emplace(DB_name, db);
@@ -197,7 +197,7 @@ void myl::CRUD<DB,hash>::creat_DB(const std::string& DB_name,const std::vector<s
 }
 
 template <class DB, class hash>
-void myl::CRUD<DB,hash>::creat_DB(const std::string& DB_name)
+void myDB::CRUD<DB,hash>::creat_DB(const std::string& DB_name)
 {
   DB db(DB_name);
   dbs.emplace(DB_name, db);
@@ -206,7 +206,7 @@ void myl::CRUD<DB,hash>::creat_DB(const std::string& DB_name)
 }
 
 template <class DB, class hash>
-myl::CRUD<DB,hash>::CRUD()
+myDB::CRUD<DB,hash>::CRUD()
 {
   std::vector<std::string> files_names;
   std::ifstream ifile;
@@ -223,7 +223,7 @@ myl::CRUD<DB,hash>::CRUD()
   
   
   ifile.close();
-  file_name = "./DataBaseTxt/" ;
+  file_name = "./DataBaseTxt/";
 
   std::string str;
   Parser pars;
